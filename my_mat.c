@@ -3,7 +3,7 @@
 #define MIN(a,b) a > b ? b : a
 #define n 10
 
-void Matrix(int matrix[n][n])
+void A(int matrix[n][n])
 {
 
     for (int i = 0; i < n; i++)
@@ -14,7 +14,7 @@ void Matrix(int matrix[n][n])
         }
     }
 }
-int pathOrnot(int mat[n][n],int i, int j)
+int B(int mat[n][n],int i, int j)
 {
     if (mat[i][j] != 0){
         return 1;//true
@@ -24,10 +24,10 @@ int pathOrnot(int mat[n][n],int i, int j)
         return 0;//false
     }
 }
-void valueMatrix(int mat[n][n],int i, int j)
+void C(int mat[n][n],int i, int j)
 {
 
-    if (pathOrnot(mat,i,j) != 0)
+    if (B(mat,i,j) != 0)
     {
        printf("%d", mat[i][j]);
        printf("\n");
@@ -41,7 +41,7 @@ void valueMatrix(int mat[n][n],int i, int j)
 }
 
 //min
-int min(int a, int b)
+int minFunc(int a, int b)
 {
     if (a == 0)
     {
@@ -55,7 +55,7 @@ int min(int a, int b)
     return (a > b) ? b : a;
 }
 //algo
-void theShortestpath(int arr[n][n]){
+void theShortestpath(int mat[n][n]){
 
     for (int k = 0; k < n; k++)
     {
@@ -63,19 +63,20 @@ void theShortestpath(int arr[n][n]){
         {
             for (int j = 0; j < n; j++)
             {
-                int temp = arr[i][k] + arr[k][j];
+                int path = mat[i][k] + mat[k][j];
                 if (i == j)
                 {
-                    arr[i][j] = 0;
+                    mat[i][j] = 0;
                 }
                 else{
-                    if (arr[i][k] == 0 || arr[k][j] == 0)
+                    if (mat[i][k] != 0 && mat[k][j] != 0)
                     {
-                        temp = 0;
+                      mat[i][j] = minFunc(mat[i][j],path);
                     }
-                    arr[i][j] = min(arr[i][j],temp);
+                    else{
+                    path = 0;
                 }
             }
         }
     }
-}
+}}

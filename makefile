@@ -1,16 +1,16 @@
 CC=gcc
 OBJECT=my_mat.o  main.o
-NAME = connections
-CFLAGS = -Wall  -g
+NAME_= connections
+CFLAGS = -Wall -g
 
 all : $(OBJECT)
-	$(CC) $(OBJECT) -o $(NAME)
+	$(CC) $(OBJECT) -o $(NAME_)
 
 my_mat.o: my_mat.c my_mat.h
 main.o: main.c my_mat.h
 
-.PHONY = all clean
+.PHONY = clean all
 
 clean:
-	rm -f *.o *.a *.so my_mat main
+	rm -f *.o *.a *.so connections
 	

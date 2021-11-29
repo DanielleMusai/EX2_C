@@ -2,22 +2,25 @@
 #define n 10
 #include "my_mat.h"
 
-
-int main(){
-char input = 1;
-int matrix [n][n]={0};
-scanf ("%c", &input);
-while ( input!='D')
+int main()
 {
-    if (input == 'A')
+
+    int matrix[n][n];
+    char ch;
+    do
     {
-         A(matrix);
+        ch = getchar();
+        switch (ch)
+        {
+            //A
+        case 'A':{
+           A(matrix);
            theShortestpath(matrix);
         }
-    
-    if (input == 'B')
-    {
-         int i, j;
+        break;
+           //B
+        case 'B':{
+            int i, j;
             scanf("%d%d", &i, &j);
             if (B(matrix,i,j) != 0)
             {
@@ -27,16 +30,17 @@ while ( input!='D')
             else{
                  printf("False\n");
             }
-        
-}
-
-     else if (input == 'C')
-    {
-         int i,j;
+        }
+        break;
+         //C
+        case 'C':{
+            int i,j;
             scanf("%d%d", &i, &j);
            C(matrix,i,j);
-        
-}
- scanf("%c",&input) ;  
-}
+        }
+        break;
+        }
+       
+       //D
+    } while (ch != 'D');
 }
